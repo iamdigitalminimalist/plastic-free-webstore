@@ -1,9 +1,15 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
+import { Tabs } from "../components/Tabs";
+import { fetchCategories } from "../utils/fetchCategories";
 
-const Home: NextPage = () => {
+type HomePageProps = {
+  categories: Category[];
+};
+
+const Home = ({ categories }: HomePageProps) => {
   return (
     <div>
       <Head>
@@ -16,8 +22,28 @@ const Home: NextPage = () => {
       <main className="relative h-[200vh] bg-[#E7ECEE]">
         <Hero />
       </main>
+
+      <section className="relative z-40 -mt-[100vh] min-h-screen bg-[#1B1B1B]">
+        <div className="space-y-10 py-16">
+          <h2 className="text-center text-4xl font-medium tracking-wide text-white md:text-5xl">
+            New Promos
+          </h2>
+          <Tabs />
+        </div>
+      </section>
     </div>
   );
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps<
+  HomePageProps
+> = async () => {
+  const categories = await fetchCategories();
+  return {
+    props: {
+      categories,
+    },
+  };
+};

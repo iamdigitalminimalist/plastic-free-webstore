@@ -1,37 +1,40 @@
+import { BiStore } from "react-icons/all";
+
 export default {
-  name: 'vendor',
-  title: 'Vendor',
-  type: 'document',
+  name: "vendor",
+  title: "Vendor",
+  type: "document",
+  icon: BiStore,
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     },
     {
-      name: 'logo',
-      title: 'logo',
-      type: 'image',
+      name: "logo",
+      title: "logo",
+      type: "image",
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'blockContent',
+      name: "description",
+      title: "Description",
+      type: "blockContent",
     },
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'logo',
+      title: "title",
+      media: "logo",
     },
   },
-}
+};
