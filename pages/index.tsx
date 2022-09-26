@@ -4,12 +4,14 @@ import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import { Tabs } from "../components/Tabs";
 import { fetchCategories } from "../utils/fetchCategories";
+import { fetchProducts } from "../utils/fetchProducts";
 
 type HomePageProps = {
   categories: Category[];
+  products: Product[];
 };
 
-const Home = ({ categories }: HomePageProps) => {
+const Home = ({ categories, products }: HomePageProps) => {
   return (
     <div>
       <Head>
@@ -28,7 +30,7 @@ const Home = ({ categories }: HomePageProps) => {
           <h2 className="text-center text-4xl font-medium tracking-wide text-white md:text-5xl">
             New Promos
           </h2>
-          <Tabs />
+          <Tabs categories={categories} products={products} />
         </div>
       </section>
     </div>
@@ -41,9 +43,11 @@ export const getServerSideProps: GetServerSideProps<
   HomePageProps
 > = async () => {
   const categories = await fetchCategories();
+  const products = await fetchProducts();
   return {
     props: {
       categories,
+      products,
     },
   };
 };
