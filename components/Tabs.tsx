@@ -17,7 +17,7 @@ export const Tabs = ({ categories, products }: TabsProps) => {
       ));
   return (
     <Tab.Group>
-      <Tab.List className="flex justify-center">
+      <Tab.List className="mx-auto flex justify-center overflow-x-scroll">
         {categories.map((category) => (
           <Tab
             key={category._id}
