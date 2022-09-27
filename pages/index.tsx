@@ -5,6 +5,7 @@ import { Hero } from "../components/Hero";
 import { Tabs } from "../components/Tabs";
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
+import { Basket } from "./Basket";
 
 type HomePageProps = {
   categories: Category[];
@@ -21,6 +22,9 @@ const Home = ({ categories, products }: HomePageProps) => {
       </Head>
 
       <Header />
+
+      <Basket />
+
       <main className="relative h-[200vh] bg-[#E7ECEE]">
         <Hero />
       </main>
