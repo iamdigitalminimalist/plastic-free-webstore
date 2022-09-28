@@ -15,17 +15,18 @@ import { GetServerSideProps } from "next";
 import { StripeProduct } from "../typings";
 import { fetchLineItems } from "../utils/fetchLineItems";
 import Currency from "react-currency-formatter";
+import { useSession } from "next-auth/react";
 
 type SuccessPageProps = {
   products: StripeProduct[];
 };
 
 export const Success = ({ products }: SuccessPageProps) => {
-  console.log(products);
   const router = useRouter();
   const { session_id } = router.query;
   const [mounted, setMounted] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
     setMounted(true);
@@ -82,7 +83,10 @@ export const Success = ({ products }: SuccessPageProps) => {
               <p className="text-sm text-gray-600">
                 Order #{session_id?.slice(-5)}
               </p>
-              <h4 className="text-lg">Thank you</h4>
+              <h4 className="text-lg">
+                Thank you{" "}
+                {session ? session.user?.name?.split(" ")[0] : "Guest"}
+              </h4>
             </div>
           </div>
 

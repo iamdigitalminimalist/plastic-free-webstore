@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Stripe from "stripe";
 import { urlFor } from "../../sanity";
+import { ProductType } from "../../typings";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-08-01",
@@ -12,7 +13,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const items: Product[] = req.body.items;
+    const items: ProductType[] = req.body.items;
 
     const transformedItems = items.map((item) => ({
       price_data: {
@@ -39,7 +40,7 @@ export default async function handler(
         cancel_url: `${req.headers.origin}/checkout`,
         metadata: {
           images: JSON.stringify(
-            items.map((item: Product) => item.image[0].asset.url)
+            items.map((item: ProductType) => item.image[0].asset.url)
           ),
         },
       };

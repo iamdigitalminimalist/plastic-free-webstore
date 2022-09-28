@@ -5,7 +5,7 @@ interface SanityBody {
   _updatedAt: string;
 }
 
-interface Image {
+interface ImageType {
   _key: string;
   _type: "image";
   asset: {
@@ -13,7 +13,7 @@ interface Image {
   };
 }
 
-interface Category extends SanityBody {
+interface CategoryType extends SanityBody {
   _type: "category";
   slug: {
     _type: "slug";
@@ -22,7 +22,7 @@ interface Category extends SanityBody {
   title: string;
 }
 
-interface Product extends SanityBody {
+interface ProductType extends SanityBody {
   _type: "product";
   title: string;
   price: number;
@@ -35,7 +35,7 @@ interface Product extends SanityBody {
     _type: "reference";
     _ref: string;
   };
-  image: Image[];
+  image: ImageType[];
 }
 
 export interface StripeProduct {

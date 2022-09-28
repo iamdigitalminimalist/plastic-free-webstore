@@ -5,9 +5,10 @@ import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
 import { removeFromBasket } from "../redux/basketSlice";
 import toast from "react-hot-toast";
+import { ProductType } from "../typings";
 
 type CheckoutProductProps = {
-  items: Product[];
+  items: ProductType[];
   id: string;
 };
 

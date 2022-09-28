@@ -1,18 +1,20 @@
 import { Tab } from "@headlessui/react";
+import { CategoryType, ProductType } from "../typings";
 import { Product } from "./Product";
 
 type TabsProps = {
-  categories: Category[];
-  products: Product[];
+  categories: CategoryType[];
+  products: ProductType[];
 };
 
 export const Tabs = ({ categories, products }: TabsProps) => {
   const showProducts = (category: number) =>
     products
       .filter(
-        (product: Product) => product.category._ref === categories[category]._id
+        (product: ProductType) =>
+          product.category._ref === categories[category]._id
       )
-      .map((product: Product) => (
+      .map((product: ProductType) => (
         <Product key={product._id} product={product} />
       ));
   return (

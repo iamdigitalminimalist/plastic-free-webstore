@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetServerSideProps, GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
@@ -8,11 +8,11 @@ import { fetchProducts } from "../utils/fetchProducts";
 import { Basket } from "./Basket";
 import { getSession } from "next-auth/react";
 import { Session } from "next-auth";
-import { Category, Product } from "../typings";
+import { CategoryType, ProductType } from "../typings";
 
 type HomePageProps = {
-  categories: Category[];
-  products: Product[];
+  categories: CategoryType[];
+  products: ProductType[];
   session: Session;
 };
 
