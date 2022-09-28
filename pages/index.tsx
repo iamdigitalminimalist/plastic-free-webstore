@@ -13,7 +13,7 @@ import { CategoryType, ProductType } from "../typings";
 type HomePageProps = {
   categories: CategoryType[];
   products: ProductType[];
-  session: Session;
+  session: Session | null;
 };
 
 const Home = ({ categories, products }: HomePageProps) => {
