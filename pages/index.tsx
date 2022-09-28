@@ -6,10 +6,14 @@ import { Tabs } from "../components/Tabs";
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
 import { Basket } from "./Basket";
+import { getSession } from "next-auth/react";
+import { Session } from "next-auth";
+import { Category, Product } from "../typings";
 
 type HomePageProps = {
   categories: Category[];
   products: Product[];
+  session: Session;
 };
 
 const Home = ({ categories, products }: HomePageProps) => {
@@ -43,15 +47,17 @@ const Home = ({ categories, products }: HomePageProps) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps<
-  HomePageProps
-> = async () => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
+  context
+) => {
   const categories = await fetchCategories();
   const products = await fetchProducts();
+  const session = await getSession(context);
   return {
     props: {
       categories,
       products,
+      session,
     },
   };
 };
