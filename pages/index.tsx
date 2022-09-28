@@ -5,7 +5,7 @@ import { Hero } from "../components/Hero";
 import { Tabs } from "../components/Tabs";
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
-import { Basket } from "./Basket";
+import { Basket } from "../components/Basket";
 import { getSession } from "next-auth/react";
 import { Session } from "next-auth";
 import { CategoryType, ProductType } from "../typings";

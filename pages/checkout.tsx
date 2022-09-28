@@ -11,14 +11,14 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Stripe from "stripe";
 import { fetchPostJSON } from "../utils/api-helpers";
 import getStripe from "../utils/get-stripejs";
-import { Product } from "../typings";
+import { ProductType } from "../typings";
 
 export const Checkout = () => {
   const items = useSelector(selectBasketItems);
   const basketTotal = useSelector(selectBasketTotal);
   const router = useRouter();
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState(
-    {} as { [key: string]: Product[] }
+    {} as { [key: string]: ProductType[] }
   );
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +27,7 @@ export const Checkout = () => {
     const groupedItems = items.reduce((results, item) => {
       (results[item._id] = results[item._id] || []).push(item);
       return results;
-    }, {} as { [key: string]: Product[] });
+    }, {} as { [key: string]: ProductType[] });
 
     setGroupedItemsInBasket(groupedItems);
   }, [items]);

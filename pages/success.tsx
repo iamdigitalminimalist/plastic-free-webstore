@@ -158,6 +158,7 @@ export const Success = ({ products }: SuccessPageProps) => {
                         <div className="relative h-7 w-7 animate-bounce rounded-md">
                           <Image
                             src="/plastic-free-svg-logo.svg"
+                            alt=""
                             layout="fill"
                             objectFit="contain"
                           />
