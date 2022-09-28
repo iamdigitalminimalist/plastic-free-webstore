@@ -11,6 +11,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Stripe from "stripe";
 import { fetchPostJSON } from "../utils/api-helpers";
 import getStripe from "../utils/get-stripejs";
+import { Product } from "../typings";
 
 export const Checkout = () => {
   const items = useSelector(selectBasketItems);
